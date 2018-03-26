@@ -9,4 +9,4 @@
 
 ## Run
 
-`$ brain-games`
+`$ brain-even`

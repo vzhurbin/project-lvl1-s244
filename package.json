@@ -2,9 +2,9 @@
   "name": "vzhurbin-brain-games",
   "version": "1.0.4",
   "description": "Brain Games by V. Zhurbin",
-  "main": "src/bin/index.js",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
   "files": ["dist"],
   "scripts": {
