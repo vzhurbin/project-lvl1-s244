@@ -1,28 +1,23 @@
 import readlineSync from 'readline-sync';
+import { getRandomInt, isEven } from './helpers';
 
 const welcomeMessage = () => console.log('Welcome to the Brain Games!');
-const getName = () => readlineSync.question('May I have your name? ');
-const sayHello = name => console.log(`Hello, ${name}!`);
-const getRandomInt = (min, max) =>
-  // The maximum is exclusive and the minimum is inclusive
-  Math.floor(Math.random() * (max - min)) + min;
-const isEven = number => number % 2 === 0;
+const getName = () => readlineSync.question('\nMay I have your name? ');
+const sayHello = name => console.log(`Hello, ${name}!\n`);
 
-export const welcomeToBrainGames = () => {
+export const welcomeGame = (gameRules) => {
   welcomeMessage();
+  console.log(gameRules);
   const name = getName();
   sayHello(name);
+  return name;
 };
 
-export const brainEven = () => {
+export const evenGame = () => {
   const YES = 'yes';
   const NO = 'no';
-
-  welcomeMessage();
-  console.log(`Answer "${YES}" if number is even, otherwise answer "${NO}".\n`);
-  const name = getName();
-  sayHello(name);
-  console.log('');
+  const gameRules = `Answer "${YES}" if number is even, otherwise answer "${NO}".`;
+  const name = welcomeGame(gameRules);
   for (let i = 0; i < 3; i += 1) {
     const testNumber = getRandomInt(1, 100);
     console.log(`Question: ${testNumber}`);
