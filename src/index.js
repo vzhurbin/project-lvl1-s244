@@ -15,7 +15,7 @@ const askQuestion = (value) => {
   console.log(`Question: ${value}`);
   return readlineSync.question('Your answer: ');
 };
-const isCorrectAnswer = (userAnswer, correctAnswer) =>
+const checkAnswer = (userAnswer, correctAnswer) =>
   formatString(userAnswer) === formatString(correctAnswer);
 
 export const welcomeToGame = (gameRules = '') => {
@@ -28,11 +28,11 @@ export const welcomeToGame = (gameRules = '') => {
 };
 
 const gameBody = (counter, userName, userAnswer, correctAnswer) => {
-  if (isCorrectAnswer(userAnswer, correctAnswer)) {
+  const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
+  if (isCorrectAnswer) {
     console.log('Correct!');
   } else {
     console.log(`"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}" \nLet's try again, ${userName}!`);
-    return;
   }
   if (counter === 2) {
     console.log(`Congratulations, ${userName}!`);
