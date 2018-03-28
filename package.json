@@ -1,9 +1,9 @@
 {
   "name": "p1games",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Brain Games by V. Zhurbin",
   "bin": {
-    "brain-games": "dist/bin/games/brain-games.js",
+    "brain-calc": "dist/bin/games/brain-calc.js",
     "brain-even": "dist/bin/games/brain-even.js"
   },
   "files": ["dist"],

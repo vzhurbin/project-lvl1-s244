@@ -1,4 +1,4 @@
-export const getRandomInt = (min = 0, max = 51) =>
+export const getRandomInt = (min = 0, max = 11) =>
   // max is exclusive and min is inclusive
   Math.floor(Math.random() * (max - min)) + min;
 
