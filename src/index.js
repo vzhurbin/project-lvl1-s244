@@ -27,7 +27,8 @@ export const welcomeToGame = (gameRules = '') => {
   return name;
 };
 
-const gameBody = (counter, userName, userAnswer, correctAnswer) => {
+const gameBody = (counter, userName, questionValue, correctAnswer) => {
+  const userAnswer = askQuestion(questionValue);
   const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
   if (isCorrectAnswer) {
     console.log('Correct!');
@@ -45,8 +46,7 @@ export const evenGame = () => {
   for (let i = 0; i < 3; i += 1) {
     const questionValue = getRandomInt();
     const correctAnswer = isEven(questionValue) ? 'yes' : 'no';
-    const userAnswer = askQuestion(questionValue);
-    gameBody(i, userName, userAnswer, correctAnswer);
+    gameBody(i, userName, questionValue, correctAnswer);
   }
 };
 
@@ -58,7 +58,6 @@ export const calcGame = () => {
     const operator = getRandomOperator();
     const questionValue = numArray.join(` ${operator} `);
     const correctAnswer = solveMathProblem(numArray, operator);
-    const userAnswer = askQuestion(questionValue);
-    gameBody(i, userName, userAnswer, correctAnswer);
+    gameBody(i, userName, questionValue, correctAnswer);
   }
 };
