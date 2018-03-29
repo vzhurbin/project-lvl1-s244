@@ -3,8 +3,10 @@
   "version": "1.0.1",
   "description": "Brain Games by V. Zhurbin",
   "bin": {
+    "brain-games": "dist/bin/brain-games.js",
     "brain-calc": "dist/bin/brain-calc.js",
-    "brain-even": "dist/bin/brain-even.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-test": "dist/bin/brain-test.js"
   },
   "files": ["dist"],
   "scripts": {

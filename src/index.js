@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import { formatString } from './helpers';
 
-const welcomeToGame = (gameRules) => {
+const welcomeToGame = (gameRules = '') => {
   console.log('Welcome to the Brain Games!');
   console.log(gameRules === '' ? '' : `${gameRules}\n`);
   const name = readlineSync.question('May I have your name? ');
@@ -17,49 +17,33 @@ const askQuestion = (value) => {
 const checkAnswer = (userAnswer, correctAnswer) =>
   formatString(userAnswer) === formatString(correctAnswer);
 
-const replyToUserAnswer = (counter, userName, userAnswer, correctAnswer, isCorrectAnswer) => {
-  let message;
-  if (!isCorrectAnswer) {
-    message = `"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}" \nLet's try again, ${userName}!`;
-  } else {
-    message = 'Correct!';
-  }
-  if (counter === 2) {
-    message = `Congratulations, ${userName}!`;
-  }
-  console.log(message);
+const getResponseMessages = (userAnswer, correctAnswer, userName) => {
+  const messages = {
+    wrong: `"${userAnswer}" is wrong answer ;(. Correct answer was "${correctAnswer}"\nLet's try again, ${userName}!`,
+    correct: 'Correct!',
+    win: `Congratulations, ${userName}!`,
+  };
+
+  return messages;
 };
 
-export { replyToUserAnswer, checkAnswer, askQuestion, welcomeToGame };
+const gameBody = (gameRules, userName, getQuestion) => {
+  for (let i = 0; i < 3; i += 1) {
+    const { correctAnswer, question } = getQuestion();
+    const userAnswer = askQuestion(question);
+    const { wrong, correct, win } = getResponseMessages(userAnswer, correctAnswer, userName);
+    const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
+    if (!isCorrectAnswer) {
+      console.log(wrong);
+      break;
+    }
+    if (isCorrectAnswer) {
+      console.log(correct);
+      if (i === 2) {
+        console.log(win);
+      }
+    }
+  }
+};
 
-// export const evenGame = () => {
-//   const gameRules = 'Answer "yes" if number is even, otherwise answer "no".';
-//   const userName = welcomeToGame(gameRules);
-//   for (let i = 0; i < 3; i += 1) {
-//     const questionValue = getRandomInt();
-//     const correctAnswer = isEven(questionValue) ? 'yes' : 'no';
-//     const userAnswer = askQuestion(questionValue);
-//     const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
-//     replyToUserAnswer(i, userName, userAnswer, correctAnswer, isCorrectAnswer);
-//     if (i === 2 || !isCorrectAnswer) {
-//       break;
-//     }
-//   }
-// };
-
-// export const calcGame = () => {
-//   const gameRules = 'What is the result of the expression?';
-//   const userName = welcomeToGame(gameRules);
-//   for (let i = 0; i < 3; i += 1) {
-//     const numArray = generateArray();
-//     const operator = getRandomOperator();
-//     const questionValue = numArray.join(` ${operator} `);
-//     const correctAnswer = solveMathProblem(numArray, operator);
-//     const userAnswer = askQuestion(questionValue);
-//     const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
-//     replyToUserAnswer(i, userName, userAnswer, correctAnswer, isCorrectAnswer);
-//     if (i === 2 || !isCorrectAnswer) {
-//       break;
-//     }
-//   }
-// };
+export { gameBody, checkAnswer, askQuestion, welcomeToGame };
