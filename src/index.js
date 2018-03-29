@@ -1,12 +1,5 @@
 import readlineSync from 'readline-sync';
-import {
-  getRandomInt,
-  solveMathProblem,
-  generateArray,
-  getRandomOperator,
-  formatString,
-  isEven,
-} from './helpers';
+import { formatString } from './helpers';
 
 const welcomeToGame = (gameRules) => {
   console.log('Welcome to the Brain Games!');
@@ -37,34 +30,36 @@ const replyToUserAnswer = (counter, userName, userAnswer, correctAnswer, isCorre
   console.log(message);
 };
 
-export const evenGame = () => {
-  const gameRules = 'Answer "yes" if number is even, otherwise answer "no".';
-  const userName = welcomeToGame(gameRules);
-  for (let i = 0; i < 3; i += 1) {
-    const questionValue = getRandomInt();
-    const correctAnswer = isEven(questionValue) ? 'yes' : 'no';
-    const userAnswer = askQuestion(questionValue);
-    const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
-    replyToUserAnswer(i, userName, userAnswer, correctAnswer, isCorrectAnswer);
-    if (i === 2 || !isCorrectAnswer) {
-      break;
-    }
-  }
-};
+export { replyToUserAnswer, checkAnswer, askQuestion, welcomeToGame };
 
-export const calcGame = () => {
-  const gameRules = 'What is the result of the expression?';
-  const userName = welcomeToGame(gameRules);
-  for (let i = 0; i < 3; i += 1) {
-    const numArray = generateArray();
-    const operator = getRandomOperator();
-    const questionValue = numArray.join(` ${operator} `);
-    const correctAnswer = solveMathProblem(numArray, operator);
-    const userAnswer = askQuestion(questionValue);
-    const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
-    replyToUserAnswer(i, userName, userAnswer, correctAnswer, isCorrectAnswer);
-    if (i === 2 || !isCorrectAnswer) {
-      break;
-    }
-  }
-};
+// export const evenGame = () => {
+//   const gameRules = 'Answer "yes" if number is even, otherwise answer "no".';
+//   const userName = welcomeToGame(gameRules);
+//   for (let i = 0; i < 3; i += 1) {
+//     const questionValue = getRandomInt();
+//     const correctAnswer = isEven(questionValue) ? 'yes' : 'no';
+//     const userAnswer = askQuestion(questionValue);
+//     const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
+//     replyToUserAnswer(i, userName, userAnswer, correctAnswer, isCorrectAnswer);
+//     if (i === 2 || !isCorrectAnswer) {
+//       break;
+//     }
+//   }
+// };
+
+// export const calcGame = () => {
+//   const gameRules = 'What is the result of the expression?';
+//   const userName = welcomeToGame(gameRules);
+//   for (let i = 0; i < 3; i += 1) {
+//     const numArray = generateArray();
+//     const operator = getRandomOperator();
+//     const questionValue = numArray.join(` ${operator} `);
+//     const correctAnswer = solveMathProblem(numArray, operator);
+//     const userAnswer = askQuestion(questionValue);
+//     const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
+//     replyToUserAnswer(i, userName, userAnswer, correctAnswer, isCorrectAnswer);
+//     if (i === 2 || !isCorrectAnswer) {
+//       break;
+//     }
+//   }
+// };
