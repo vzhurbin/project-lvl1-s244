@@ -15,6 +15,6 @@ const getCalcQuestion = () => {
 
 export const gameRules = 'What is the result of the expression?';
 
-export const calcGame = (userName) => {
-  gameBody(userName, gameRules, getCalcQuestion);
+export const calcGame = () => {
+  gameBody(gameRules, getCalcQuestion);
 };

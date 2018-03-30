@@ -1,4 +1,4 @@
-export const getRandomInt = (min = 1, max = 11) =>
+export const getRandomInt = (min = 0, max = 10) =>
   // max is exclusive and min is inclusive
   Math.floor(Math.random() * (max - min)) + min;
 
@@ -36,8 +36,6 @@ export const solveMathProblem = (numArray, operator) => {
 
   return result;
 };
-
-export const isEven = number => number % 2 === 0;
 
 export const formatString = value =>
   value
