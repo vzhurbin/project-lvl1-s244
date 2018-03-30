@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
-import { brainCalc } from '../games';
+import { calcGame, gameRules } from '../games/brain-calc';
+import { welcomeMessage, getUserName } from '..';
 
-brainCalc();
+welcomeMessage(gameRules);
+const name = getUserName();
+calcGame(name);

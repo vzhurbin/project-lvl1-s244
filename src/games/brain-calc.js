@@ -1,10 +1,22 @@
-import { welcomeToGame, gameBody } from '..';
-import { getCalcQuestion } from '../helpers';
+import { gameBody } from '..';
+import { generateArray, getRandomOperator, solveMathProblem } from '../helpers';
 
-const brainCalc = () => {
-  const gameRules = 'What is the result of the expression?';
-  const userName = welcomeToGame(gameRules);
-  gameBody(gameRules, userName, getCalcQuestion);
+const getCalcQuestion = () => {
+  const arr = generateArray();
+  const operator = getRandomOperator();
+  const correctAnswer = solveMathProblem(arr, operator);
+  const question = arr.join(` ${operator} `);
+
+  return {
+    correctAnswer,
+    question,
+  };
 };
 
-export default brainCalc;
+const gameRules = 'What is the result of the expression?';
+
+const calcGame = (userName) => {
+  gameBody(userName, gameRules, getCalcQuestion);
+};
+
+export { calcGame, gameRules };

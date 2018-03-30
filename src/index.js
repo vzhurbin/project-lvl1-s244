@@ -1,9 +1,12 @@
 import readlineSync from 'readline-sync';
 import { formatString } from './helpers';
 
-const welcomeToGame = (gameRules = '') => {
+const welcomeMessage = (gameRules = '') => {
   console.log('Welcome to the Brain Games!');
   console.log(gameRules === '' ? '' : `${gameRules}\n`);
+};
+
+const getUserName = () => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!\n`);
   return name;
@@ -27,7 +30,7 @@ const getResponseMessages = (userAnswer, correctAnswer, userName) => {
   return messages;
 };
 
-const gameBody = (gameRules, userName, getQuestion) => {
+const gameBody = (userName, gameRules, getQuestion) => {
   for (let i = 0; i < 3; i += 1) {
     const { correctAnswer, question } = getQuestion();
     const userAnswer = askQuestion(question);
@@ -46,4 +49,4 @@ const gameBody = (gameRules, userName, getQuestion) => {
   }
 };
 
-export { gameBody, checkAnswer, askQuestion, welcomeToGame };
+export { gameBody, getUserName, checkAnswer, askQuestion, welcomeMessage };

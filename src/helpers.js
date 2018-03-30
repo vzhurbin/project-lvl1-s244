@@ -39,30 +39,6 @@ export const solveMathProblem = (numArray, operator) => {
 
 export const isEven = number => number % 2 === 0;
 
-export const getEvenQuestion = () => {
-  const question = getRandomInt();
-  const correctAnswer = isEven(question) ? 'yes' : 'no';
-  const obj = {
-    correctAnswer,
-    question,
-  };
-
-  return obj;
-};
-
-export const getCalcQuestion = () => {
-  const arr = generateArray();
-  const operator = getRandomOperator();
-  const correctAnswer = solveMathProblem(arr, operator);
-  const question = arr.join(` ${operator} `);
-  const obj = {
-    correctAnswer,
-    question,
-  };
-
-  return obj;
-};
-
 export const formatString = value =>
   value
     .toString()
