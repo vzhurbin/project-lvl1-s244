@@ -1,8 +1,8 @@
 import { gameBody } from '..';
-import { generateArray, getRandomOperator, solveMathProblem } from '../helpers';
+import { generateNumArray, getRandomOperator, solveMathProblem } from '../helpers';
 
 const getCalcQuestion = () => {
-  const arr = generateArray();
+  const arr = generateNumArray();
   const operator = getRandomOperator();
   const correctAnswer = solveMathProblem(arr, operator);
   const question = arr.join(` ${operator} `);
@@ -13,10 +13,8 @@ const getCalcQuestion = () => {
   };
 };
 
-const gameRules = 'What is the result of the expression?';
+export const gameRules = 'What is the result of the expression?';
 
-const calcGame = (userName) => {
+export const calcGame = (userName) => {
   gameBody(userName, gameRules, getCalcQuestion);
 };
-
-export { calcGame, gameRules };

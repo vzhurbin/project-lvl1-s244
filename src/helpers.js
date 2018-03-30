@@ -1,4 +1,4 @@
-export const getRandomInt = (min = 0, max = 11) =>
+export const getRandomInt = (min = 1, max = 11) =>
   // max is exclusive and min is inclusive
   Math.floor(Math.random() * (max - min)) + min;
 
@@ -8,7 +8,7 @@ export const getRandomOperator = () => {
   return operators[index];
 };
 
-export const generateArray = (length = 2) => {
+export const generateNumArray = (length = 2) => {
   const arr = [];
   for (let i = 0; i < length; i += 1) {
     arr.push(getRandomInt());

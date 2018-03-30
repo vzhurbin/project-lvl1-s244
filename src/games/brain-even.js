@@ -11,10 +11,8 @@ const getEvenQuestion = () => {
   };
 };
 
-const gameRules = 'Answer "yes" if number is even, otherwise answer "no".';
+export const gameRules = 'Answer "yes" if number is even, otherwise answer "no".';
 
-const evenGame = (userName) => {
+export const evenGame = (userName) => {
   gameBody(userName, gameRules, getEvenQuestion);
 };
-
-export { evenGame, gameRules };
