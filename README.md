@@ -9,4 +9,11 @@
 
 ## Run
 
-`$ brain-games` OR `$ brain-even` OR `$ brain-calc`
+Available Commands/Games:
+
+```
+$ brain-games
+$ brain-even
+$ brain-calc
+$ brain-gcd
+```
