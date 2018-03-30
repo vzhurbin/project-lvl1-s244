@@ -14,10 +14,8 @@ const getGcdQuestion = () => {
   };
 };
 
-const gameRules = 'Find the greatest common divisor of given numbers.';
+export const gameRules = 'Find the greatest common divisor of given numbers.';
 
-const gcdGame = (userName) => {
-  gameBody(userName, gameRules, getGcdQuestion);
+export const gcdGame = () => {
+  gameBody(gameRules, getGcdQuestion);
 };
-
-export { gcdGame, gameRules };

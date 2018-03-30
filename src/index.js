@@ -30,7 +30,9 @@ const getResponseMessages = (userAnswer, correctAnswer, userName) => {
   return messages;
 };
 
-const gameBody = (userName, gameRules, getQuestion) => {
+const gameBody = (gameRules, getQuestion) => {
+  welcomeMessage(gameRules);
+  const userName = getUserName();
   for (let i = 0; i < 3; i += 1) {
     const { correctAnswer, question } = getQuestion();
     const userAnswer = askQuestion(question);

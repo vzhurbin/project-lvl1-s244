@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-import { evenGame, gameRules } from '../games/brain-even';
-import { welcomeMessage, getUserName } from '..';
+import { evenGame } from '../games/brain-even';
 
-welcomeMessage(gameRules);
-const name = getUserName();
-evenGame(name);
+evenGame();
