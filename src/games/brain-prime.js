@@ -20,8 +20,8 @@ const getPrimeQuestion = () => {
 };
 
 export const gameRules = 'Answer "yes" if number is prime, otherwise answer "no".';
-// 'Is this number prime?';
+const questionMessage = 'Is this number prime?';
 
 export const primeGame = () => {
-  gameBody(gameRules, getPrimeQuestion);
+  gameBody(gameRules, getPrimeQuestion, questionMessage);
 };
