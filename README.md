@@ -17,5 +17,6 @@ $ brain-even
 $ brain-calc
 $ brain-gcd
 $ brain-balance
+$ brain-prime
 $ brain-progression
 ```

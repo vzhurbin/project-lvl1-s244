@@ -30,25 +30,28 @@ const getResponseMessages = (userAnswer, correctAnswer, userName) => {
   return messages;
 };
 
+const iterateQuestions = (name, fn, message, counter) => {
+  const { correctAnswer, question } = fn();
+  const userAnswer = askQuestion(question, message);
+  const { wrong, correct, win } = getResponseMessages(userAnswer, correctAnswer, name);
+  const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
+  if (!isCorrectAnswer) {
+    return console.log(wrong);
+  }
+  if (isCorrectAnswer) {
+    console.log(correct);
+    if (counter === 2) {
+      return console.log(win);
+    }
+  }
+
+  return iterateQuestions(name, fn, message, counter + 1);
+};
+
 const gameBody = (gameRules, getQuestion, questionMessage = 'Question:') => {
   welcomeMessage(gameRules);
   const userName = getUserName();
-  for (let i = 0; i < 3; i += 1) {
-    const { correctAnswer, question } = getQuestion();
-    const userAnswer = askQuestion(question, questionMessage);
-    const { wrong, correct, win } = getResponseMessages(userAnswer, correctAnswer, userName);
-    const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
-    if (!isCorrectAnswer) {
-      console.log(wrong);
-      break;
-    }
-    if (isCorrectAnswer) {
-      console.log(correct);
-      if (i === 2) {
-        console.log(win);
-      }
-    }
-  }
+  return iterateQuestions(userName, getQuestion, questionMessage, 0);
 };
 
 export { gameBody, getUserName, checkAnswer, askQuestion, welcomeMessage };

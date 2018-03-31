@@ -3,13 +3,15 @@ import { getRandomInt } from '../helpers';
 
 const generateProgression = () => {
   const start = getRandomInt(1, 100);
-  const step = getRandomInt(2, 10);
-  const arr = [start];
-  for (let i = 0; i < 10; i += 1) {
-    arr.push(arr[i] + step);
-  }
+  const stepValue = getRandomInt(2, 10);
+  const makeArray = (arr, step) => {
+    const len = arr.length;
+    if (len === 10) return arr;
+    const newValue = arr[len - 1] + step;
+    return makeArray([...arr, newValue], step);
+  };
 
-  return arr;
+  return makeArray([start], stepValue);
 };
 
 const getProgressQuestion = () => {
