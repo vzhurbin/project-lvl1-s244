@@ -8,13 +8,9 @@ export const getRandomOperator = () => {
   return operators[index];
 };
 
-export const generateNumArray = (length = 2) => {
-  const arr = [];
-  for (let i = 0; i < length; i += 1) {
-    arr.push(getRandomInt());
-  }
-
-  return arr;
+export const generateNumArray = (length = 2, arr = []) => {
+  if (arr.length === length) return arr;
+  return generateNumArray(length, [...arr, getRandomInt()]);
 };
 
 export const solveMathProblem = (numArray, operator) => {

@@ -2,10 +2,20 @@ import { gameBody } from '..';
 import { getRandomInt } from '../helpers';
 
 const isPrime = (num) => {
-  for (let i = 2; i < num; i += 1) {
-    if (num % i === 0) return false;
-  }
-  return num !== 1;
+  // Loop
+  // for (let i = 2; i < num; i += 1) {
+  //   if (num % i === 0) return false;
+  // }
+  // return num !== 1;
+
+  // Recursive
+  const iter = (x, div) => {
+    if (x === div) return true;
+    if (x === 1 || x % div === 0) return false;
+    return iter(x, div + 1);
+  };
+
+  return iter(num, 2);
 };
 
 const getPrimeQuestion = () => {
