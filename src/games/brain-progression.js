@@ -16,9 +16,8 @@ const getProgressQuestion = () => {
   const arr = generateProgression();
   const removedIndex = getRandomInt(0, 10);
   const correctAnswer = arr[removedIndex];
-  const newArr = [...arr];
-  newArr.splice(removedIndex, 1, '..');
-  const question = newArr.join(' ');
+  arr.splice(removedIndex, 1, '..');
+  const question = arr.join(' ');
 
   return {
     correctAnswer,
