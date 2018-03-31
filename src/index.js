@@ -12,8 +12,8 @@ const getUserName = () => {
   return name;
 };
 
-const askQuestion = (value) => {
-  console.log(`Question: ${value}`);
+const askQuestion = (value, message) => {
+  console.log(`${message} ${value}`);
   return readlineSync.question('Your answer: ');
 };
 
@@ -30,12 +30,12 @@ const getResponseMessages = (userAnswer, correctAnswer, userName) => {
   return messages;
 };
 
-const gameBody = (gameRules, getQuestion) => {
+const gameBody = (gameRules, getQuestion, questionMessage = 'Question:') => {
   welcomeMessage(gameRules);
   const userName = getUserName();
   for (let i = 0; i < 3; i += 1) {
     const { correctAnswer, question } = getQuestion();
-    const userAnswer = askQuestion(question);
+    const userAnswer = askQuestion(question, questionMessage);
     const { wrong, correct, win } = getResponseMessages(userAnswer, correctAnswer, userName);
     const isCorrectAnswer = checkAnswer(userAnswer, correctAnswer);
     if (!isCorrectAnswer) {
