@@ -5,14 +5,13 @@
 
 ## Setup
 
-`$ make install`
+`$ npm install -g p1games`
 
 ## Run
 
-Available Games (commands):
+Use one of below commands in console to run a game:
 
 ```
-$ brain-games
 $ brain-even
 $ brain-calc
 $ brain-gcd
